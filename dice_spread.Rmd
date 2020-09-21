@@ -1,0 +1,77 @@
+---
+title: "Roleplaying Game Dice Distributions"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r,includee=FALSE}
+library(ggplot2)
+```
+
+
+## GitHub Documents
+About five years ago, I won a contest from [Evil Hat Productions](https://www.evilhat.com/home/) as part of the Evil Hat Street team. My prize was an hour long conversation with members of the Evil Hat team on a subject of my choosing. To be honest, I was not terribly interested in the conversation at the time (I wanted the tangible goodies from the other prizes). But my friend [John](https://github.com/owendl/rpgaday2020/blob/master/29-ride-DO.md) and I got on a call with Sean Nittner and Fred Hicks to discuss game design. 
+
+## Including Code
+
+You can include R code in the document as follows:
+
+```{r fate dice}
+n <- 4
+l <- rep(list(-1:1), n)
+
+fate=expand.grid(l)
+
+fate$result=rowSums(fate)
+# hist(fate$result,breaks = seq(-5,5))
+fate$dice="fate"
+```
+
+```{r pbta dice}
+n <- 2
+l <- rep(list(1:6), n)
+
+aw=expand.grid(l)
+aw$result=rowSums(aw)
+aw$dice="aw"
+
+
+```
+
+```{r, message=FALSE}
+ggplot(dice,aes(x=result)) +
+  geom_histogram(data=subset(dice,dice == 'fate'),fill = "blue", alpha = 0.2) +
+    geom_histogram(data=subset(dice,dice == 'aw'),fill = "red", alpha = 0.2)+
+aes(y=stat(count)/sum(stat(count))) +
+  scale_y_continuous(labels = scales::percent)#+stat_function(fun = dnorm, args = list(mean = 0, sd = 2))+ stat_function(fun = dnorm, args = list(mean = 0, sd = 3))
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r dice comparison}
+qplot(x =result, data = rbind(fate[,c("result", "dice")], aw[,c("result", "dice")]),geom = "density",color=dice )
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+aw$result=aw$result-7
+dice=rbind(fate[,c("result", "dice")], aw[,c("result", "dice")])
+# qplot(x =result, data = dice,geom = "density",color=dice, xlim=c(-7,7))
+
+ggplot(dice,aes(x=result)) +
+  # geom_density(data=subset(dice,dice == 'fate')) +
+    # geom_density(data=subset(dice,dice == 'aw'))+
+geom_density(aes(color=dice))+
+  stat_function(fun = dnorm, args = list(mean = 0, sd = 2))+ stat_function(fun = dnorm, args = list(mean = 0, sd = 3))+ 
+  xlim(c(-7,7))
+```
+
+
+
+
