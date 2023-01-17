@@ -49,19 +49,18 @@ success and variations thereof can change game to game but the core
 mechanic stays the same.
 
 Below is a table of the potential results from this mechancic and their
-proportion of possible roles (ignoring stat
-modification).
+proportion of possible roles (ignoring stat modification).
 
 |     2 |     3 |     4 |     5 |     6 |     7 |     8 |     9 |    10 |    11 |    12 |
-| ----: | ----: | ----: | ----: | ----: | ----: | ----: | ----: | ----: | ----: | ----: |
+|------:|------:|------:|------:|------:|------:|------:|------:|------:|------:|------:|
 | 0.028 | 0.056 | 0.083 | 0.111 | 0.139 | 0.167 | 0.139 | 0.111 | 0.083 | 0.056 | 0.028 |
 
 Frequency of Results of 2d6
 
 A few notes on these results:
 
-  - 42% of PbtA rolls are a failure on the dice (6-)
-  - 42% of PbtA rolls are only a partial success on the dice (7-9)
+-   42% of PbtA rolls are a failure on the dice (6-)
+-   42% of PbtA rolls are only a partial success on the dice (7-9)
 
 ### Fate
 
@@ -71,11 +70,10 @@ combined results are totaled. These dice are also six-sided but two
 faces are blank (0), two have a “-” sign (-1) and two faces have a “+”
 sign (+1). Thus the range of values for a 4df roll is -4 to 4. Beyond
 the dice themselves, players add skills to the rolls, typically ranging
-from 0 to
-5.
+from 0 to 5.
 
-|   \-4 |   \-3 |   \-2 |   \-1 |     0 |     1 |     2 |     3 |     4 |
-| ----: | ----: | ----: | ----: | ----: | ----: | ----: | ----: | ----: |
+|    -4 |    -3 |    -2 |    -1 |     0 |     1 |     2 |     3 |     4 |
+|------:|------:|------:|------:|------:|------:|------:|------:|------:|
 | 0.012 | 0.049 | 0.123 | 0.198 | 0.235 | 0.198 | 0.123 | 0.049 | 0.012 |
 
 Frequency of Results of 4df
@@ -87,12 +85,14 @@ based on the skill used. Almost two out of three rolls, 63%, of Fate
 dice rolls are -1, 0 or 1. Thus, most rolls are approximately the value
 of the character’s skill.
 
+### Savage Worlds
+
 ### Comparing Different Dice
 
 ![](dice_spread_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 The two additional lines are of two normal distributions
-\(N(0,4), N(0,9)\). These provide rough estimations of the distributions
+$N(0,4), N(0,9)$. These provide rough estimations of the distributions
 of the two different dice mechanics.
 
 ### Agency and Experience: a personal thoughts
@@ -114,3 +114,23 @@ I find Fate games really sing with a lighter, more playful tone while
 the best PbtA games lean into the seriousness their names imply. Neither
 game is really better than the other, each provides its own tenor and
 style to games.
+
+### Update Jan 2023
+
+I have recently come across a variation on the Apocalypse World dice
+mechanic called advantage and disadvantage. A player with advantage
+(something in the narrative favoring them) a player gets to roll three
+six-sided dice (3d6) and sum the the two highest dice (a roll of 2,4,6
+becomes a result of 10). If a player rolls with disadvantage (something
+in the fiction is acting against them) they again roll 3d6 but sum the
+two lowest dice (a roll of 2,4,6 becomes a result of 6). I was curious
+to look at how this affected the dice distributions. Below is the
+distribution of normal Apocalypse World (pbta), with advantage
+(pbta_adv) and disadvantage (pbta_dis).
+
+![](dice_spread_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+
+Intuitively it makes sense that advantage or disadvantage modified the
+mean of the distributions. What I found more interesting was that the
+variance also changed drastically, moving into close to the variance of
+a high agency game like Fate.
